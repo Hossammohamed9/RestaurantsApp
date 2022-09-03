@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Task</string>
+    <string name="choose_category">حابب تطلب ايه؟ اختار قسمك المفضل</string>
+    <string name="pic">pic</string>
+    <string name="most_selling_restaurants">المطاعم الأكثر مبيعا</string>
+    <string name="show_more">عرض المزيد</string>
+    <string name="most_selling_dish">الاطباق الاكثر طلبا لدينا</string>
+    <string name="Restaurants">المطاعم</string>
+    <string name="open">مفتوح</string>
+    <string name="closed">مغلق</string>
+    <string name="cover">Cover</string>
+    <string name="logo">logo</string>
+    <string name="dishpic">dishPic</string>
+    <string name="ad">Ad</string>
+    <string name="filter">تصفية</string>
+    <string name="sort">الترتيب حسب</string>
+    <string name="sort_by_name">اسم المطاعم</string>
+    <string name="sort_by_delivery_time">وقت التوصيل</string>
+    <string name="sort_by_delivery_fee">تكلفة الشحن</string>
+    <string name="sort_by_highest_rated">الاعلي تقييما</string>
+    <string name="save">حفظ</string>
+
+</resources>
