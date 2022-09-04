@@ -42,47 +42,47 @@ class RestaurantsFragment : Fragment() {
 
         viewModel.restaurants.observe(viewLifecycleOwner){
             restaurantsAdapter.restaurants = it
-            binding.searchId.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-
-                @SuppressLint("NotifyDataSetChanged")
-                override fun onQueryTextSubmit(p0: String?): Boolean {
-                    viewModel.tempList.clear()
-                    val searchText = p0!!.lowercase(Locale.getDefault())
-                    if (searchText.isNotEmpty()){
-                        viewModel.search(searchText)
-                        restaurantsAdapter.restaurants = viewModel.tempList
-                        binding.restaurantRVId.adapter!!.notifyDataSetChanged()
-                    }else{
-                        viewModel.tempList.clear()
-                        viewModel.tempList.addAll(it)
-                        restaurantsAdapter.restaurants = viewModel.tempList
-                        binding.restaurantRVId.adapter!!.notifyDataSetChanged()
-
-                    }
-                    return false
-                }
-
-                @SuppressLint("NotifyDataSetChanged")
-                override fun onQueryTextChange(p0: String?): Boolean {
-                    viewModel.tempList.clear()
-                    val searchText = p0!!.lowercase(Locale.getDefault())
-                    if (searchText.isNotEmpty()){
-                        viewModel.search(searchText)
-                        restaurantsAdapter.restaurants = viewModel.tempList
-                        binding.restaurantRVId.adapter!!.notifyDataSetChanged()
-                    }else{
-                        viewModel.tempList.clear()
-                        viewModel.tempList.addAll(it)
-                        restaurantsAdapter.restaurants = viewModel.tempList
-                        binding.restaurantRVId.adapter!!.notifyDataSetChanged()
-
-                    }
-                    return false
-                }
-            })
-
         }
 
+
+        binding.searchId.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                viewModel.tempList.clear()
+                val searchText = p0!!.lowercase(Locale.getDefault())
+                if (searchText.isNotEmpty()){
+                    viewModel.search(searchText)
+                    restaurantsAdapter.restaurants = viewModel.tempList
+                    binding.restaurantRVId.adapter!!.notifyDataSetChanged()
+                }else{
+                    viewModel.tempList.clear()
+                    viewModel.restaurants.value?.let { viewModel.tempList.addAll(it) }
+                    restaurantsAdapter.restaurants = viewModel.tempList
+                    binding.restaurantRVId.adapter!!.notifyDataSetChanged()
+
+                }
+                return false
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onQueryTextChange(p0: String?): Boolean {
+                viewModel.tempList.clear()
+                val searchText = p0!!.lowercase(Locale.getDefault())
+                if (searchText.isNotEmpty()){
+                    viewModel.search(searchText)
+                    restaurantsAdapter.restaurants = viewModel.tempList
+                    binding.restaurantRVId.adapter!!.notifyDataSetChanged()
+                }else{
+                    viewModel.tempList.clear()
+                    viewModel.restaurants.value?.let { viewModel.tempList.addAll(it) }
+                    restaurantsAdapter.restaurants = viewModel.tempList
+                    binding.restaurantRVId.adapter!!.notifyDataSetChanged()
+
+                }
+                return false
+            }
+        })
 
 
         viewModel.ads.observe(viewLifecycleOwner){
